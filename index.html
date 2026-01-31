@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THREADIX - Modern Clothing Store</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+      <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div id="mainContent"></div>
+    <!-- NAVBAR -->
+    <header>
+      <nav>
+        <a href="#" class="logo">THREADIX</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a onclick="aboutUsPage()" id="aboutUsPage">About</a></li>
+          <li><a onclick="showContactUsPage()" id="contactUsPage">Contact Us</a></li>
+          <li><a href="#contact">Follow Us</a></li>
+          <li><a href="#contact">Just In</a></li>
+          <li><a href="#contact">Specials</a></li>
+        </ul>
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search clothes..."
+          />
+          <button class="search-btn" onclick="searchProducts()">Search</button>
+        </div>
+        <div id="cartInfo" style="margin: 0; padding: 0; display: flex;">
+          <p id="cartLength" style="color: rgb(209, 36, 36); font-size: large; font-weight: bold;">0</p>
+        <button class="cart-btn" onclick="addToCart()">
+        <i id="shoppingCartTrolley" class="fas fa-cart-shopping" style="font-size: 30px; float: right; margin-right: 20px;"></i>
+        </button>
+        </div>
+        <div class="loginInfo">
+        <button id="login" onclick="showLoginPage()">
+        <i class="fas fa-user"></i>login
+       </button>
+       </div>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <h1>👗 Elevate Your Style 🕺</h1>
+      <p>Discover the latest fashion trends with THREADIX</p>
+      <button class="hero-btn" onclick="scrollToProducts()">Shop Now</button>
+    </section>
+
+    <!-- ANIMATED BANNER -->
+    <section class="banner">
+      <img
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&h=500&fit=crop"
+        alt="Fashion Banner"
+        class="banner-image"
+      />
+      <div class="banner-content">
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+          <h2 class="banner-title">New Collection 2026</h2>
+          <p class="banner-subtitle">Exclusive designs with premium quality</p>
+          <button class="banner-btn" onclick="scrollToProducts()">
+            Explore Now
+          </button>
+        </div>
+        <div class="banner-floating">
+          <span class="floating-icon">✨</span>
+          <span class="floating-icon">👗</span>
+          <span class="floating-icon">✨</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CATEGORIES -->
+    <section class="categories">
+      <h2>Shop by Category</h2>
+      <div class="category-grid">
+        <div class="category-card" onclick="filterByCategory('hoodies')">
+          <div class="category-image category-svg"><img src="a dark grey hoodie.png" alt="Hoodies" style="object-fit: contain; width: auto; height: 100%; border-radius: 10px;"></div>
+          <h3>Hoodies</h3>
+          <p>Cozy & Comfortable</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('shirts')">
+          <div class="category-image category-svg"><img src="A black short-sleeve.png" alt="Shirts" style="object-fit: contain; width: auto; height: 100%; border-radius: 10px;"></div>
+          <h3>Shirts</h3>
+          <p>Classic & Modern</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('dresses')">
+          <div class="category-image category-svg"><img src="A dress .png" alt="Dresses" style="object-fit: contain; width: auto; height: 100%; border-radius: 10px;"></div>
+          <h3>Dresses</h3>
+          <p>Elegant & Stylish</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('jeans')">
+          <div class="category-image category-svg"><img src="A pair of blue jeans.png" alt="Jeans" style="object-fit: contain; width: 100%; height: 100%; border-radius: 10px;"></div>
+          <h3>Jeans</h3>
+          <p>Perfect Fit</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('shoes')">
+          <div class="category-image category-svg"><img src="A pair of blue Nike .png" alt="Shoes" style="object-fit: contain; width: auto; height: 100%; border-radius: 10px;"></div>
+          <h3>Shoes</h3>
+          <p>Trendy & Comfortable</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('accessories')">
+          <div class="category-image category-svg"><img src="A blue side bag.png" alt="Accessories" style="object-fit: contain; width: auto; height: 100%; border-radius: 10px;"></div>
+          <h3>Accessories</h3>
+          <p>Complete Your Look</p>
+        </div>
+      </div>
+    </section>
+    <div id="cartPage"></div>
+
+    <!-- FILTER SECTION -->
+    <div class="filter-section">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterByPrice('all')">
+          All Prices
+        </button>
+        <button class="filter-btn" onclick="filterByPrice('low')">
+          Under R50
+        </button>
+        <button class="filter-btn" onclick="filterByPrice('mid')">
+          R50 - R100
+        </button>
+        <button class="filter-btn" onclick="filterByPrice('high')">
+          R1000+
+        </button>
+      </div>
+      <select class="sort-select" id="sortSelect" onchange="sortProducts()">
+        <option value="featured">Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section" id="products">
+      <div class="products-header">
+        <h2>Our Collection</h2>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="no-results" id="noResults" style="display: none">
+        No products found
+      </div>
+    </section>
+    <div id="cart-page" style="display: none;">
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <p id="cart-total"></p>
+    </div>
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            THREADIX is your ultimate destination for premium fashion wear. We
+            bring style, comfort, and quality together.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <ul>
+            <li>📧 sollysavege@gmail.com</li>
+            <li>📱 +27 65 520 3638</li>
+            <li>📍 Mall of the South, Gauteng, South Africa</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 THREADIX. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
